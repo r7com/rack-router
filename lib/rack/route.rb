@@ -61,10 +61,10 @@ module Rack
         params = if @wildcard_name
           { @wildcard_name => path_match[1].to_s.split('/') }
         else
-          Hash[path_match.names.map(&:to_sym).zip(path_match.captures)]
+          Hash[path_match.names.map(&:to_str).zip(path_match.captures)]
         end
 
-        params.delete(:format) if params.has_key?(:format) && params[:format].nil?
+        params.delete('format') if params.has_key?('format') && params['format'].nil?
 
         if meets_constraints(params)
           params

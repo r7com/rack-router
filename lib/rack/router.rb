@@ -1,10 +1,10 @@
-require 'extensions/request'
+require 'rack_ext/request'
 require 'rack/route'
 
 module Rack
 
   class Router
-    VERSION = "0.4.0"
+    VERSION = "0.4.1"
 
     HEAD = 'HEAD'.freeze
     GET = 'GET'.freeze
