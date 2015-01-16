@@ -6,7 +6,7 @@ A simple router for rack apps.  Requires Ruby 1.9+.
 
 Add this line to your application's Gemfile:
 
-    gem 'rack-router'
+    gem 'rack-router', git: 'https://github.com/r7com/rack-router.git', branch: 'master'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install rack-router
+    $ gem install rack-router -l https://github.com/r7com/rack-router.git
 
 ## Usage
 
