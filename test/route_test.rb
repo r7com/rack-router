@@ -20,27 +20,27 @@ class RouteTest < Test::Unit::TestCase
     match "/"          , "/foo"          , nil
     match "/foo"       , "/"             , nil
     match "/foo"       , "/foo"          , {}
-    match "/:id"       , "/42"           , { :id => "42" }
+    match "/:id"       , "/41"           , { 'id' => "41" }
     match "/:id"       , "/"             , nil
-    match "/posts/:id" , "/posts/42"     , { :id => "42" }
+    match "/posts/:id" , "/posts/40"     , { 'id' => '40' }
     match "/posts/:id" , "/posts"        , nil
-    match "/:x/:y"     , "/a/b"          , { :x => "a" , :y => "b" }
-    match "/posts"     , "/posts.json"   , { :format => "json" }
-    match "/posts/:id" , "/posts/42.json", { :id => "42", :format => "json" }
+    match "/:x/:y"     , "/a/b"          , { 'x' => "a" , 'y' => "b" }
+    match "/posts"     , "/posts.json"   , { 'format' => "json" }
+    match "/posts/:id" , "/posts/43.json", { 'id' => "43", 'format' => "json" }
   end
 
   def test_match_with_constraints
     r = route('GET', "/posts/:year/:month/:day/:slug",
               :constraints => {
-                :year => /\A\d{4}\Z/,
-                :month => /\A\d{1,2}\Z/,
-                :day => /\A\d{1,2}\Z/},
-              :as => "article")
+                'year' => /\A\d{4}\Z/,
+                'month' => /\A\d{1,2}\Z/,
+                'day' => /\A\d{1,2}\Z/},
+                :as => "article")
     assert_equal({
-      :year => "2012",
-      :month => "9",
-      :day => "20",
-      :slug => "test"
+      'year' => "2012",
+      'month' => "9",
+      'day' => "20",
+      'slug' => "test"
     }, r.match('GET', "/posts/2012/9/20/test"))
     assert_equal(nil, r.match('POST', "/posts/2012/9/20/test"))
     assert_equal(nil, r.match('GET', "/posts/2012/9/20"))

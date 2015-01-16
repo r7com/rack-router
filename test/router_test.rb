@@ -3,7 +3,7 @@ require 'rack/router'
 
 class RouterTest < Test::Unit::TestCase
   def test_call
-    app1  = lambda{|env| [200, {}, [env["rack.route_params"][:id]]] }
+    app1  = lambda{|env| [200, {}, [env["rack.route_params"]['id']]] }
     app2  = lambda{|env| [200, {}, ["2"]] }
 
     router = Rack::Router.new do
