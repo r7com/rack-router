@@ -1,3 +1,4 @@
+require 'extensions/request'
 require 'rack/route'
 
 module Rack
